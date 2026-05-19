@@ -140,18 +140,6 @@ The **Model Training** module builds, tunes, and evaluates a machine learning cl
 | 🤖 **Scikit-learn** | Machine learning models & evaluation |
 
 ---
-
----
-
-## 📊 Key Findings
-
-> *(To be updated after full analysis)*
-
-- 🔵 **Finding 1** — 
-- 🔵 **Finding 2** — 
-- 🔵 **Finding 3** — 
-- 🔵 **Finding 4** — 
-
 ---
 
 ## 💡 Inspiration & References
