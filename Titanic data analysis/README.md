@@ -141,34 +141,6 @@ The **Model Training** module builds, tunes, and evaluates a machine learning cl
 
 ---
 
-## 🚀 Getting Started
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/your-username/titanic-data-analysis.git
-cd titanic-data-analysis
-```
-
-### 2. Install dependencies
-
-```bash
-pip install pandas numpy matplotlib seaborn scikit-learn jupyter
-```
-
-### 3. Run in order
-
-```bash
-# Step 1 — Clean the data
-jupyter notebook "Data Cleaning/cleaning_titanic_dataset.ipynb"
-
-# Step 2 — Explore the data
-jupyter notebook "Exploratory Data Analysis/Exploratory_Data_Analysis_of_Titanic_dataset.ipynb"
-
-# Step 3 — Train the model
-jupyter notebook "Model Training/Model_training.ipynb"
-```
-
 ---
 
 ## 📊 Key Findings
