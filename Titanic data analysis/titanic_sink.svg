@@ -1,0 +1,388 @@
+<svg viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      /* Sky gradient */
+      #sky { animation: none; }
+
+      /* Stars twinkling */
+      .star { animation: twinkle 3s infinite alternate ease-in-out; }
+      .star:nth-child(2n) { animation-duration: 2s; animation-delay: 0.5s; }
+      .star:nth-child(3n) { animation-duration: 4s; animation-delay: 1s; }
+      .star:nth-child(5n) { animation-duration: 2.5s; animation-delay: 1.5s; }
+      @keyframes twinkle {
+        0%   { opacity: 0.2; r: 1px; }
+        100% { opacity: 1;   r: 2px; }
+      }
+
+      /* SOS distress light blink */
+      .sos { animation: blink 0.8s steps(1) infinite; }
+      @keyframes blink { 0%,49%{opacity:1} 50%,100%{opacity:0} }
+
+      /* Smoke puff rising */
+      .smoke1 { animation: rise1 4s ease-out infinite; }
+      .smoke2 { animation: rise2 4s ease-out infinite; animation-delay: 1.3s; }
+      .smoke3 { animation: rise3 4s ease-out infinite; animation-delay: 2.6s; }
+      @keyframes rise1 { 0%{transform:translate(0,0) scale(1);opacity:0.7} 100%{transform:translate(-18px,-60px) scale(2.5);opacity:0} }
+      @keyframes rise2 { 0%{transform:translate(0,0) scale(1);opacity:0.6} 100%{transform:translate(-22px,-70px) scale(3);opacity:0} }
+      @keyframes rise3 { 0%{transform:translate(0,0) scale(1);opacity:0.5} 100%{transform:translate(-15px,-55px) scale(2);opacity:0} }
+
+      /* Ship sinking + tilting - loops with a pause */
+      #titanic-ship {
+        transform-box: fill-box;
+        transform-origin: 72% 68%;
+        animation: sinkShip 12s ease-in-out infinite;
+      }
+      @keyframes sinkShip {
+        0%   { transform: rotate(0deg)   translateY(0px);   opacity: 1; }
+        10%  { transform: rotate(-2deg)  translateY(4px);   opacity: 1; }
+        30%  { transform: rotate(-8deg)  translateY(18px);  opacity: 1; }
+        55%  { transform: rotate(-18deg) translateY(55px);  opacity: 1; }
+        72%  { transform: rotate(-30deg) translateY(100px); opacity: 0.85; }
+        82%  { transform: rotate(-40deg) translateY(150px); opacity: 0.4; }
+        88%  { transform: rotate(-45deg) translateY(185px); opacity: 0; }
+        89%  { transform: rotate(0deg)   translateY(0px);   opacity: 0; }
+        100% { transform: rotate(0deg)   translateY(0px);   opacity: 1; }
+      }
+
+      /* Water wave animation */
+      #wave1 { animation: waveMove1 5s ease-in-out infinite; }
+      #wave2 { animation: waveMove2 4s ease-in-out infinite; animation-delay: -2s; }
+      #wave3 { animation: waveMove3 6s ease-in-out infinite; animation-delay: -1s; }
+      @keyframes waveMove1 {
+        0%,100% { transform: translateX(0); }
+        50%     { transform: translateX(-20px); }
+      }
+      @keyframes waveMove2 {
+        0%,100% { transform: translateX(0); }
+        50%     { transform: translateX(25px); }
+      }
+      @keyframes waveMove3 {
+        0%,100% { transform: translateX(0); }
+        50%     { transform: translateX(-15px); }
+      }
+
+      /* Ripple on water surface */
+      .ripple { animation: rippleOut 3s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+      .ripple:nth-child(2) { animation-delay: 1s; }
+      .ripple:nth-child(3) { animation-delay: 2s; }
+      @keyframes rippleOut {
+        0%   { transform: scale(0.3); opacity: 0.8; }
+        100% { transform: scale(2.5); opacity: 0; }
+      }
+
+      /* Floating debris */
+      .debris { animation: floatDebris 6s ease-in-out infinite; }
+      .debris:nth-child(2) { animation-delay: 2s; animation-duration: 7s; }
+      .debris:nth-child(3) { animation-delay: 4s; animation-duration: 5s; }
+      @keyframes floatDebris {
+        0%,100% { transform: translateY(0) rotate(0deg); }
+        50%     { transform: translateY(-5px) rotate(8deg); }
+      }
+
+      /* Iceberg bob */
+      #iceberg { animation: icebergBob 6s ease-in-out infinite; }
+      @keyframes icebergBob {
+        0%,100% { transform: translateY(0); }
+        50%     { transform: translateY(-4px); }
+      }
+
+      /* Moon glow pulse */
+      #moon-glow { animation: moonGlow 4s ease-in-out infinite; }
+      @keyframes moonGlow {
+        0%,100% { opacity: 0.15; }
+        50%     { opacity: 0.35; }
+      }
+
+      /* Subtitle fade loop */
+      #tagline { animation: fadeTag 12s ease-in-out infinite; }
+      @keyframes fadeTag {
+        0%,10% { opacity: 0; }
+        20%,80% { opacity: 1; }
+        90%,100% { opacity: 0; }
+      }
+
+      /* Title shimmer */
+      #main-title {
+        animation: shimmer 4s ease-in-out infinite;
+      }
+      @keyframes shimmer {
+        0%,100% { fill: #a8d8ea; }
+        50%      { fill: #e8f4f8; }
+      }
+    </style>
+
+    <!-- Sky gradient -->
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#010110"/>
+      <stop offset="70%"  stop-color="#050a30"/>
+      <stop offset="100%" stop-color="#0b1f55"/>
+    </linearGradient>
+
+    <!-- Deep water gradient -->
+    <linearGradient id="waterDeep" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#0d3b6e"/>
+      <stop offset="40%"  stop-color="#072040"/>
+      <stop offset="100%" stop-color="#010a1a"/>
+    </linearGradient>
+
+    <!-- Water surface shimmer -->
+    <linearGradient id="waveGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#0d3b6e" stop-opacity="0.9"/>
+      <stop offset="30%"  stop-color="#1a5276" stop-opacity="1"/>
+      <stop offset="60%"  stop-color="#0e4d78" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#0b2d4a" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <!-- Moon glow radial -->
+    <radialGradient id="moonGlowGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#fffbe8" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#fffbe8" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Ship hull gradient -->
+    <linearGradient id="hullGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#1c2636"/>
+      <stop offset="100%" stop-color="#0d1520"/>
+    </linearGradient>
+
+    <!-- Superstructure gradient -->
+    <linearGradient id="superGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#263045"/>
+      <stop offset="100%" stop-color="#1a2234"/>
+    </linearGradient>
+
+    <!-- Iceberg gradient -->
+    <linearGradient id="iceGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#d6f0ff"/>
+      <stop offset="60%"  stop-color="#a8d8ef"/>
+      <stop offset="100%" stop-color="#5ba3c9" stop-opacity="0.5"/>
+    </linearGradient>
+
+    <!-- Moon reflection on water -->
+    <linearGradient id="reflectGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#fffbe8" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#fffbe8" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Clip for water masking -->
+    <clipPath id="waterClip">
+      <rect x="0" y="240" width="900" height="140"/>
+    </clipPath>
+  </defs>
+
+  <!-- ═══════════ SKY ═══════════ -->
+  <rect id="sky" width="900" height="380" fill="url(#skyGrad)"/>
+
+  <!-- ═══════════ STARS ═══════════ -->
+  <circle class="star" cx="30"  cy="20"  r="1.2" fill="white"/>
+  <circle class="star" cx="75"  cy="10"  r="1.5" fill="white"/>
+  <circle class="star" cx="130" cy="35"  r="1"   fill="white"/>
+  <circle class="star" cx="180" cy="15"  r="1.3" fill="#d0e8ff"/>
+  <circle class="star" cx="240" cy="30"  r="1"   fill="white"/>
+  <circle class="star" cx="310" cy="8"   r="1.5" fill="white"/>
+  <circle class="star" cx="370" cy="22"  r="1.1" fill="#ffe8d0"/>
+  <circle class="star" cx="430" cy="12"  r="1.4" fill="white"/>
+  <circle class="star" cx="500" cy="28"  r="1"   fill="white"/>
+  <circle class="star" cx="565" cy="5"   r="1.6" fill="white"/>
+  <circle class="star" cx="620" cy="18"  r="1.1" fill="#d0e8ff"/>
+  <circle class="star" cx="680" cy="32"  r="1.3" fill="white"/>
+  <circle class="star" cx="750" cy="10"  r="1.5" fill="white"/>
+  <circle class="star" cx="810" cy="24"  r="1"   fill="white"/>
+  <circle class="star" cx="860" cy="40"  r="1.2" fill="white"/>
+  <circle class="star" cx="55"  cy="60"  r="1"   fill="white"/>
+  <circle class="star" cx="160" cy="75"  r="1.3" fill="#d0ffee"/>
+  <circle class="star" cx="285" cy="55"  r="1"   fill="white"/>
+  <circle class="star" cx="400" cy="65"  r="1.2" fill="white"/>
+  <circle class="star" cx="520" cy="50"  r="1.4" fill="white"/>
+  <circle class="star" cx="640" cy="70"  r="1"   fill="white"/>
+  <circle class="star" cx="770" cy="58"  r="1.1" fill="white"/>
+  <circle class="star" cx="880" cy="45"  r="1.5" fill="#ffd0d0"/>
+  <circle class="star" cx="100" cy="100" r="1"   fill="white"/>
+  <circle class="star" cx="220" cy="90"  r="1.2" fill="white"/>
+  <circle class="star" cx="345" cy="110" r="1"   fill="white"/>
+  <circle class="star" cx="460" cy="95"  r="1.3" fill="white"/>
+  <circle class="star" cx="590" cy="105" r="1"   fill="white"/>
+  <circle class="star" cx="710" cy="88"  r="1.4" fill="white"/>
+  <circle class="star" cx="835" cy="100" r="1.1" fill="white"/>
+
+  <!-- ═══════════ MOON ═══════════ -->
+  <circle id="moon-glow" cx="118" cy="72" r="55" fill="url(#moonGlowGrad)"/>
+  <circle cx="118" cy="72" r="28" fill="#fffbe8" opacity="0.95"/>
+  <!-- crescent shadow -->
+  <circle cx="130" cy="64" r="22" fill="#0d1a3d"/>
+  <!-- moon texture dots -->
+  <circle cx="108" cy="76" r="3" fill="#e8ddb5" opacity="0.4"/>
+  <circle cx="122" cy="82" r="2" fill="#e8ddb5" opacity="0.3"/>
+  <circle cx="100" cy="68" r="2" fill="#e8ddb5" opacity="0.25"/>
+
+  <!-- Moon reflection on water -->
+  <rect x="95" y="245" width="46" height="130" fill="url(#reflectGrad)" opacity="0.5"/>
+
+  <!-- ═══════════ ICEBERG ═══════════ -->
+  <g id="iceberg">
+    <polygon points="50,265 90,200 130,265" fill="url(#iceGrad)" opacity="0.85"/>
+    <polygon points="60,265 95,215 125,265" fill="#c5eaf8" opacity="0.5"/>
+    <!-- below water hint -->
+    <polygon points="40,265 110,265 130,300 20,295" fill="#5ba3c9" opacity="0.2" clip-path="url(#waterClip)"/>
+    <!-- highlight -->
+    <line x1="90" y1="200" x2="82" y2="240" stroke="white" stroke-width="1.5" opacity="0.6"/>
+  </g>
+
+  <!-- ═══════════ SHIP ═══════════ -->
+  <g id="titanic-ship">
+
+    <!-- Smoke puffs from funnels -->
+    <ellipse class="smoke1" cx="535" cy="148" rx="7" ry="5" fill="#4a4a4a" opacity="0.7"/>
+    <ellipse class="smoke2" cx="570" cy="138" rx="6" ry="4" fill="#3d3d3d" opacity="0.6"/>
+    <ellipse class="smoke3" cx="605" cy="143" rx="8" ry="5" fill="#555"    opacity="0.5"/>
+
+    <!-- Mast & rigging -->
+    <line x1="620" y1="240" x2="620" y2="110" stroke="#8a9bb0" stroke-width="2"/>
+    <line x1="620" y1="130" x2="680" y2="155" stroke="#8a9bb0" stroke-width="1" opacity="0.6"/>
+    <line x1="620" y1="130" x2="560" y2="155" stroke="#8a9bb0" stroke-width="1" opacity="0.6"/>
+    <!-- crow's nest -->
+    <rect x="612" y="108" width="16" height="10" rx="2" fill="#1a2636"/>
+
+    <!-- SOS flare on mast -->
+    <circle class="sos" cx="620" cy="106" r="3" fill="#ff4444"/>
+
+    <!-- Rear mast -->
+    <line x1="745" y1="235" x2="745" y2="150" stroke="#8a9bb0" stroke-width="1.5"/>
+
+    <!-- ── Funnels (3) ── -->
+    <!-- Funnel 1 (foremost) -->
+    <rect x="522" y="148" width="26" height="52" rx="3" fill="#b03020"/>
+    <rect x="522" y="148" width="26" height="8"  rx="2" fill="#c0392b"/>
+    <rect x="523" y="155" width="6"  height="45" fill="#8b2217" opacity="0.5"/>
+    <!-- Funnel 2 -->
+    <rect x="558" y="152" width="24" height="48" rx="3" fill="#b03020"/>
+    <rect x="558" y="152" width="24" height="8"  rx="2" fill="#c0392b"/>
+    <rect x="559" y="159" width="5"  height="41" fill="#8b2217" opacity="0.5"/>
+    <!-- Funnel 3 -->
+    <rect x="593" y="156" width="22" height="44" rx="3" fill="#b03020"/>
+    <rect x="593" y="156" width="22" height="8"  rx="2" fill="#c0392b"/>
+    <rect x="594" y="163" width="5"  height="37" fill="#8b2217" opacity="0.5"/>
+
+    <!-- ── Superstructure (3 tiers) ── -->
+    <!-- Top deck -->
+    <rect x="490" y="178" width="230" height="22" rx="2" fill="url(#superGrad)"/>
+    <!-- promenade windows row -->
+    <rect x="498" y="182" width="8"  height="10" rx="1" fill="#ffd070" opacity="0.7"/>
+    <rect x="512" y="182" width="8"  height="10" rx="1" fill="#ffd070" opacity="0.6"/>
+    <rect x="526" y="182" width="8"  height="10" rx="1" fill="#ffd070" opacity="0.5"/>
+    <rect x="560" y="182" width="8"  height="10" rx="1" fill="#ffd070" opacity="0.65"/>
+    <rect x="574" y="182" width="8"  height="10" rx="1" fill="#ffd070" opacity="0.55"/>
+    <rect x="600" y="182" width="8"  height="10" rx="1" fill="#ffd070" opacity="0.7"/>
+    <rect x="614" y="182" width="8"  height="10" rx="1" fill="#ffd070" opacity="0.6"/>
+    <rect x="680" y="182" width="8"  height="10" rx="1" fill="#ffd070" opacity="0.5"/>
+    <rect x="694" y="182" width="8"  height="10" rx="1" fill="#ffd070" opacity="0.45"/>
+
+    <!-- Middle deck -->
+    <rect x="470" y="200" width="265" height="24" rx="2" fill="url(#superGrad)"/>
+    <!-- windows -->
+    <rect x="478" y="205" width="9"  height="11" rx="1" fill="#ffd070" opacity="0.6"/>
+    <rect x="494" y="205" width="9"  height="11" rx="1" fill="#ffd070" opacity="0.7"/>
+    <rect x="510" y="205" width="9"  height="11" rx="1" fill="#ffd070" opacity="0.55"/>
+    <rect x="526" y="205" width="9"  height="11" rx="1" fill="#ffd070" opacity="0.5"/>
+    <rect x="550" y="205" width="9"  height="11" rx="1" fill="#ffd070" opacity="0.65"/>
+    <rect x="566" y="205" width="9"  height="11" rx="1" fill="#ffd070" opacity="0.6"/>
+    <rect x="590" y="205" width="9"  height="11" rx="1" fill="#ffd070" opacity="0.7"/>
+    <rect x="615" y="205" width="9"  height="11" rx="1" fill="#ffd070" opacity="0.5"/>
+    <rect x="640" y="205" width="9"  height="11" rx="1" fill="#ffd070" opacity="0.55"/>
+    <rect x="665" y="205" width="9"  height="11" rx="1" fill="#ffd070" opacity="0.45"/>
+    <rect x="700" y="205" width="9"  height="11" rx="1" fill="#ffd070" opacity="0.5"/>
+
+    <!-- Lower deck -->
+    <rect x="440" y="224" width="320" height="18" rx="2" fill="url(#superGrad)"/>
+
+    <!-- ── Hull ── -->
+    <!-- Main hull body -->
+    <path d="M420,242 L800,242 L790,268 L405,268 Z" fill="url(#hullGrad)"/>
+    <!-- Hull waterline stripe (white/red) -->
+    <rect x="420" y="242" width="380" height="5" fill="#c8cdd5" opacity="0.8"/>
+    <!-- Hull below waterline (red anti-foul) -->
+    <path d="M408,258 L792,258 L790,268 L405,268 Z" fill="#7b1a14" opacity="0.9"/>
+    <!-- Bow (pointed right) -->
+    <path d="M800,242 L830,258 L800,268 Z" fill="url(#hullGrad)"/>
+    <!-- Stern (rounded left) -->
+    <path d="M420,242 Q395,255 405,268 L420,268 Z" fill="url(#hullGrad)"/>
+    <!-- Anchor chain -->
+    <line x1="800" y1="252" x2="820" y2="265" stroke="#8a9bb0" stroke-width="2" opacity="0.5"/>
+
+    <!-- Portholes along hull -->
+    <circle cx="460" cy="252" r="3.5" fill="#ffd070" opacity="0.6"/>
+    <circle cx="490" cy="252" r="3.5" fill="#ffd070" opacity="0.7"/>
+    <circle cx="520" cy="252" r="3.5" fill="#ffd070" opacity="0.5"/>
+    <circle cx="550" cy="252" r="3.5" fill="#ffd070" opacity="0.65"/>
+    <circle cx="580" cy="252" r="3.5" fill="#ffd070" opacity="0.6"/>
+    <circle cx="610" cy="252" r="3.5" fill="#ffd070" opacity="0.55"/>
+    <circle cx="640" cy="252" r="3.5" fill="#ffd070" opacity="0.5"/>
+    <circle cx="670" cy="252" r="3.5" fill="#ffd070" opacity="0.45"/>
+    <circle cx="700" cy="252" r="3.5" fill="#ffd070" opacity="0.4"/>
+    <circle cx="730" cy="252" r="3.5" fill="#ffd070" opacity="0.35"/>
+    <circle cx="760" cy="252" r="3.5" fill="#ffd070" opacity="0.3"/>
+  </g>
+  <!-- end ship -->
+
+  <!-- ═══════════ WATER ═══════════ -->
+  <!-- Deep water base -->
+  <rect x="0" y="258" width="900" height="122" fill="url(#waterDeep)"/>
+
+  <!-- Wave layer 1 (front, darkest) -->
+  <g id="wave1">
+    <path d="M-20,262 Q60,252 140,262 Q220,272 300,262 Q380,252 460,262 Q540,272 620,262 Q700,252 780,262 Q860,272 920,262 L920,380 L-20,380 Z"
+          fill="#0d3b6e" opacity="0.85"/>
+  </g>
+
+  <!-- Wave layer 2 -->
+  <g id="wave2">
+    <path d="M-30,268 Q50,258 130,268 Q210,278 290,268 Q370,258 450,268 Q530,278 610,268 Q690,258 770,268 Q850,278 930,268 L930,380 L-30,380 Z"
+          fill="#0b3260" opacity="0.9"/>
+  </g>
+
+  <!-- Wave layer 3 (brightest crests) -->
+  <g id="wave3">
+    <path d="M0,264 Q80,256 160,264 Q240,272 320,264 Q400,256 480,264 Q560,272 640,264 Q720,256 800,264 Q880,272 900,264 L900,270 Q820,278 740,270 Q660,262 580,270 Q500,278 420,270 Q340,262 260,270 Q180,278 100,270 Q20,262 0,270 Z"
+          fill="#1a5276" opacity="0.6"/>
+  </g>
+
+  <!-- White wave crests -->
+  <path d="M0,263 Q45,258 90,263 Q135,268 180,263" stroke="white" stroke-width="1" fill="none" opacity="0.25"/>
+  <path d="M250,265 Q295,260 340,265 Q385,270 430,265" stroke="white" stroke-width="1" fill="none" opacity="0.2"/>
+  <path d="M500,262 Q545,257 590,262 Q635,267 680,262" stroke="white" stroke-width="1" fill="none" opacity="0.22"/>
+  <path d="M720,266 Q765,261 810,266 Q855,271 900,266" stroke="white" stroke-width="1" fill="none" opacity="0.18"/>
+
+  <!-- Floating debris on surface -->
+  <g>
+    <g class="debris"><rect x="200" y="263" width="18" height="4" rx="1" fill="#6d4c41" opacity="0.7"/></g>
+    <g class="debris"><rect x="350" y="266" width="12" height="3" rx="1" fill="#5d4037" opacity="0.6"/></g>
+    <g class="debris"><rect x="280" y="261" width="8"  height="3" rx="1" fill="#795548" opacity="0.5"/></g>
+  </g>
+
+  <!-- Ripples -->
+  <ellipse class="ripple" cx="255" cy="264" rx="12" ry="4" fill="none" stroke="#5aabcc" stroke-width="1.2" opacity="0.5"/>
+  <ellipse class="ripple" cx="380" cy="267" rx="10" ry="3" fill="none" stroke="#5aabcc" stroke-width="1"   opacity="0.4"/>
+  <ellipse class="ripple" cx="160" cy="265" rx="14" ry="4" fill="none" stroke="#5aabcc" stroke-width="1"   opacity="0.35"/>
+
+  <!-- ═══════════ TITLE TEXT ═══════════ -->
+  <text id="main-title" x="450" y="335"
+        text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="28"
+        font-weight="bold"
+        letter-spacing="6"
+        fill="#a8d8ea">
+    TITANIC DATA ANALYSIS
+  </text>
+
+  <text id="tagline" x="450" y="362"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="13"
+        font-style="italic"
+        letter-spacing="2"
+        fill="#6aaccc"
+        opacity="0">
+    "She sank into history — the data sails on."
+  </text>
+</svg>
