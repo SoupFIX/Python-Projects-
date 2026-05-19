@@ -184,7 +184,7 @@ jupyter notebook "Model Training/Model_training.ipynb"
 
 ## 💡 Inspiration & References
 
-- Took inspiration from [Repo Name](link) by [Author]
+- Took inspiration from [Titanic Survival Prediction](https://github.com/tkarim45/Beginner-Data-Science-Projects/tree/main/Titanic%20Survival%20Prediction) by [tkarim45]
 
 ---
 
